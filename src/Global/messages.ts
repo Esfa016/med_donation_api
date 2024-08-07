@@ -1,5 +1,5 @@
 export const ErrorMessages = {
-     UserExists:
+  UserExists:
     'A user with this email already exists. Please log in or use a different email.',
   InternalServerError:
     'Oops! Something went wrong on our end. Please try again later.',
@@ -19,4 +19,20 @@ export const ErrorMessages = {
     'The OTP you entered might be expired or invalid. Please request a new one.',
   OtpMismatch: 'The OTP you entered is incorrect. Please try again.',
   VerificationRequired: 'Please verify your account to proceed.',
-}
+};
+export const SuccessMessages = {
+  SaveSuccessful: 'Your changes have been saved successfully.',
+  LoginSuccessful: 'You have logged in successfully.',
+  UpdateSuccessful: 'Your update was successful.',
+  DeleteSuccessful: 'The item has been deleted successfully.',
+  VerificationComplete:
+    'Your account has been verified. Please log in to continue.',
+  ResetPasswordSent:
+    'We have sent an OTP to your account. Please check your email.',
+  RedirectionSuccessful: 'Redirection was successful.',
+  ConfirmSuccessful: 'Confirmation was successful.',
+
+ 
+  OtpSent: 'An OTP has been sent to your email. Please verify your account.',
+
+};

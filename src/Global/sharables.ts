@@ -20,7 +20,6 @@ import {
 import { Type } from 'class-transformer';
 import { ErrorMessages } from './messages';
 
-
 @Catch()
 export class AllExceptionsFilter extends BaseExceptionFilter {
   private readonly logger = new Logger(AllExceptionsFilter.name);
@@ -74,26 +73,28 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
   }
 }
 export enum AccountRoles {
-    ADMIN = 'admin',
-    DONOR = 'donor',
-    SUPPLIER = 'supplier'
+  ADMIN = 'admin',
+  DONOR = 'donor',
+  SUPPLIER = 'supplier',
 }
 
-export type SupplierProfile = {
-  firstName: string;
-  lastName?: string;
-  email: string;
-  role: AccountRoles.SUPPLIER;
-};
+export enum AllowedAccountRoles {
+  DONOR = 'donor',
+  CUSTOMER = 'customer',
+}
 
 export interface UserAccount {
   id: mongoose.Schema.Types.ObjectId;
   role: AccountRoles;
   email: string;
   fullName: string;
-
 }
 export var currentUser: UserAccount | null = null;
 export const setCurrentUser = (user: UserAccount) => {
   currentUser = user;
 };
+
+export enum AccountStatus {
+  ENABLED = 'enabled',
+  DISABLED = 'disabled',
+}
