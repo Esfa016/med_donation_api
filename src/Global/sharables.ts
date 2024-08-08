@@ -29,8 +29,6 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
     const response = ctx.getResponse();
     const request = ctx.getRequest();
 
-    // Log the exception
-
     if (exception instanceof HttpException) {
       const status = exception.getStatus();
       const exceptionResponse = exception.getResponse();
@@ -40,7 +38,6 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
           : (exceptionResponse as any).message;
 
       if (status !== HttpStatus.INTERNAL_SERVER_ERROR) {
-        // If the status is not Internal Server Error, return the actual exception message
         response.status(status).json({
           statusCode: status,
           timestamp: new Date().toISOString(),
@@ -49,7 +46,7 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
         });
       } else {
         this.logger.error(exception);
-        // If it's an Internal Server Error, return a custom message
+
         response.status(status).json({
           statusCode: status,
           timestamp: new Date().toISOString(),
@@ -59,7 +56,7 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
       }
     } else {
       this.logger.error(exception);
-      // If it's not an HttpException, assume it's an Internal Server Error
+
       response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
         timestamp: new Date().toISOString(),
@@ -68,7 +65,6 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
       });
     }
 
-    // Optional: Call the base class's catch method if needed
     super.catch(exception, host);
   }
 }

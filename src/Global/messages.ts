@@ -18,6 +18,7 @@ export const ErrorMessages = {
   OtpNotFound:
     'The OTP you entered might be expired or invalid. Please request a new one.',
   OtpMismatch: 'The OTP you entered is incorrect. Please try again.',
+  OtpExpire:'The OTP you entered is expired.',
   VerificationRequired: 'Please verify your account to proceed.',
 };
 export const SuccessMessages = {
